@@ -30,7 +30,7 @@ def snapshots():
 @snapshots.command('list')
 @click.option('--project', default=None,
     help="Only snapshots for project (tag Project:<name>)")
-@click.option('--all', 'list_all', default=False, is_Flag=True,
+@click.option('--all', 'list_all', default=False, is_flag=True,
     help="List all snapshots for each volume, not just the most recent")
 def list_snapshots(project, list_all):
     "List EC2 snapshots"
@@ -100,7 +100,7 @@ def create_snapshots(project):
             if has_pending_snapshot(v):
                 print(" Skipping {0}, snapshot already in progress".format(v.id))
                 continue
-                
+
             print(" Creating snapshot of {0}".format(v.id))
             v.create_snapshot(Description="Created by SnapshotAlyzer")
 
